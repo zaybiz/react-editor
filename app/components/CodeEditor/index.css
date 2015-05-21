@@ -1,0 +1,12 @@
+.CodeEditor-input {
+  border: solid 1px #ddd;
+  padding: 8px;
+  width: 400px;
+  height: 200px;
+  font-family: monospace;
+}
+
+[contentEditable="true"]:focus {
+  box-shadow: 2px 2px 2px #f3f4f5;
+  outline: solid 1px #8884FF;
+}

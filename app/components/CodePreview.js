@@ -28,10 +28,11 @@ export default class CodePreview extends Component {
     Signals.outputGenerated.remove(this.onOutputGenerate);
   }
 
-  onOutputGenerate(html) {
-    var markup = '<!doctype html><html><head><meta charset="utf-8"><title></title></head><body></body></html>';
-    html = markup.replace('</body>', html + '</body>');
+  onOutputGenerate(code) {
+    var markup = '<!doctype html><html><head><meta charset="utf-8"><title></title></head><div id="b"></div><body><script></script></body></html>';
+    var html = markup.replace('</script>', code + '</script>');
     this.renderPreview(html);
+    //console.log(html);
   }
 
   preRenderPreview() {

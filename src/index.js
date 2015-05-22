@@ -2,15 +2,17 @@ import './index.css';
 
 import React, {Component} from 'react';
 
-import CodeEditor from './CodeEditor';
-import CodePreview from './CodePreview';
+import Editor from './CodeEditor';
+import Preview from './CodePreview';
+import Control from './ControlBar';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <CodeEditor />
-        <CodePreview />
+        <Control />
+        <Editor />
+        <Preview />
       </div>
     );
   }

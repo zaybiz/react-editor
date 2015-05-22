@@ -2,6 +2,79 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="preview.css" />
   </head>
-  <body></body>
+  <body>
+    <div id="result"><iframe></iframe></div>
+  </body>
+  <script>
+    (function(){
+      
+      var scrollY;
+      var src = 'http://alves.im';
+      var isConstructor = Object.prototype.toString.call(window.HTMLElement).indexOf("Constructor") > 0;
+      var isOpera = !!window.opera || navigator.userAgent.indexOf(" OPR/") >= 0;
+      var isChrome = !!window.chrome && !isOpera;
+
+      function hotLoader(e) {
+        // if (e.origin !== src) {
+        //   return false;
+        // }
+
+        var data = JSON.parse(e.data);
+        if (data.action !== 'render') {
+          return false;
+        }
+        
+        var container = document.getElementById('result'); // a
+        var frame = container.querySelector('iframe'); //j
+        var output = document.createElement('iframe');
+        output.sandbox = 'allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts';
+        output.setAttribute('allowfullscreen', true);
+        container.appendChild(output);
+
+        var win = output.contentWindow || output.contentDocument.parentWindow;
+        var doc = win.document;
+        var outputStr = data.output;
+
+        var load = function() {
+          if (frame) {
+            container.removeChild(frame);
+          }
+
+          doc.open();
+          doc.write('');
+          doc.write(outputStr.toString());
+          doc.close();
+
+          if(scrollY) {
+            win.scrollTo(0,scrollY);
+          }
+
+          //win.addEventListener('click')
+          win.onscroll = function(){
+            scrollY = this.scrollY;
+          }
+        };
+
+        var onLoaded = function() {
+          this.removeEventListener('load', onLoaded);
+        };
+
+        output.addEventListener('load', onLoaded, false);
+
+        if (isConstructor || isOpera || isChrome) {
+          setTimeout(function(){
+            load();
+          }, 60);
+        } else {
+          load();
+        }
+
+        return false;
+
+      }
+      window.addEventListener('message', hotLoader, false);
+    })();
+  </script>
 </html>

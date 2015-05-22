@@ -1,11 +1,13 @@
 import './index.css';
 
 import React, {Component} from 'react';
+import Signals from '../../utils/Signals';
 
 export default class ControlBar extends Component {
 
   handleRunClick(e) {
     e.preventDefault();
+    Signals.runPressed.dispatch();
   }
 
   render() {

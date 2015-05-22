@@ -1,0 +1,8 @@
+.JavascriptEditor {
+  left: 0;
+}
+
+[contentEditable="true"]:focus {
+  box-shadow: 2px 2px 2px #ddd;
+  outline: none;
+}

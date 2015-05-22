@@ -1,10 +1,10 @@
-import '../styles/CodeEditor.css';
+import '../styles/JavascriptEditor.css';
 
 import React, {Component} from 'react';
 
 import Signals from '../utils/Signals';
 
-export default class CodeEditor extends Component {
+export default class JavascriptEditor extends Component {
 
   componentDidMount() {
     Signals.runPressed.add(this.handleRunClick.bind(this));
@@ -22,8 +22,8 @@ export default class CodeEditor extends Component {
 
   render() {
     return (
-      <div className="Panel CodeEditor">
-        <div className="CodeEditor-edit" ref="edit"></div>
+      <div className="Panel JavascriptEditor">
+        <div className="PanelEdit JsEdit" ref="edit"></div>
       </div>
     );
   }

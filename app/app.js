@@ -2,7 +2,7 @@ import './styles/app.css';
 
 import React, {Component} from 'react';
 
-import Editor from './components/CodeEditor';
+import JavascriptEditor from './components/JavascriptEditor';
 import Preview from './components/CodePreview';
 import Control from './components/ControlBar';
 
@@ -12,7 +12,7 @@ class App extends Component {
       <div className="App">
         <Control />
         <div className="Editor">
-          <Editor />
+          <JavascriptEditor />
           <Preview />
         </div>
       </div>

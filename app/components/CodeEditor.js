@@ -1,8 +1,8 @@
-import './index.css';
+import '../styles/CodeEditor.css';
 
 import React, {Component} from 'react';
 
-import Signals from '../../utils/Signals';
+import Signals from '../utils/Signals';
 
 export default class CodeEditor extends Component {
 
@@ -22,8 +22,8 @@ export default class CodeEditor extends Component {
 
   render() {
     return (
-      <div className="CodeEditor">
-        <div className="CodeEditor-edit" contentEditable="true" ref="edit"></div>
+      <div className="Panel CodeEditor">
+        <div className="CodeEditor-edit" ref="edit"></div>
       </div>
     );
   }

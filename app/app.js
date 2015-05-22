@@ -1,4 +1,4 @@
-import './index.css';
+import './styles/app.css';
 
 import React, {Component} from 'react';
 
@@ -9,10 +9,12 @@ import Control from './components/ControlBar';
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className="App">
         <Control />
-        <Editor />
-        <Preview />
+        <div className="Editor">
+          <Editor />
+          <Preview />
+        </div>
       </div>
     );
   }

@@ -1,7 +1,11 @@
+.CodeEditor {
+  left: 0;
+}
+
 .CodeEditor-edit {
   padding: 8px;
   width: 100%;
-  height: 200px;
+  height: 100%;
   font-family: monospace;
   background-color: #f3f4f5;
 }

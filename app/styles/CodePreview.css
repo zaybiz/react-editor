@@ -4,3 +4,7 @@ iframe {
   border: none;
   background: #fff;
 }
+
+.CodePreview {
+  left: 50%;
+}

@@ -1,8 +1,8 @@
-import './index.css';
+import '../styles/CodePreview.css';
 
 import React, {Component} from 'react';
 
-import Signals from '../../utils/Signals';
+import Signals from '../utils/Signals';
 
 export default class CodePreview extends Component {
 
@@ -35,7 +35,7 @@ export default class CodePreview extends Component {
   }
 
   preRenderPreview() {
-    //clearTimeout(this.rendertimeout), 
+    //clearTimeout(this.rendertimeout),
     //this.rendertimeout = setTimeout(this._render.bind(this), a !== c ? a : 250)
   }
 
@@ -51,8 +51,8 @@ export default class CodePreview extends Component {
 
   render() {
     return (
-      <div className="CodePreview">
-        <div className="PanelResult" ref="result"></div>
+      <div className="Panel CodePreview">
+        <div ref="result"></div>
       </div>
     );
   }

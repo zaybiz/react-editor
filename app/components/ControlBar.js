@@ -1,7 +1,7 @@
-import './index.css';
+import '../styles/ControlBar.css';
 
 import React, {Component} from 'react';
-import Signals from '../../utils/Signals';
+import Signals from '../utils/Signals';
 
 export default class ControlBar extends Component {
 

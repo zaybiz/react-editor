@@ -4,26 +4,28 @@ import React, {Component} from 'react';
 import Signals from '../utils/Signals';
 import CodeMirror from 'codemirror';
 
+import 'codemirror/mode/javascript/javascript';
 
 export default class JavascriptEditor extends Component {
 
   constructor(props) {
     super(props);
     this.editor = null;
+
     this.settings = {
       mode: 'text/javascript',
+      value: "React.render(\n  <h1>Hello, world!</h1>,\n  document.getElementById('content')\n);",
       viewportMargin: Infinity,
-      lineNumbers: !0,
-      lineWrapping: !0,
-      theme: 'ceditor',
+      lineNumbers: true,
+      lineWrapping: true,
       tabSize: 2,
-      foldGutter: !0,
+      foldGutter: true,
       gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
       extraKeys: {
         'Ctrl-Space': 'autocomplete',
         Tab: 'autocomplete'
       },
-      autoCloseBrackets: !0
+      autoCloseBrackets: true
     };
   }
 

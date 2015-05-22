@@ -25,7 +25,7 @@
     "quotes": [1, "single"],
     "eol-last": [0],
     "no-underscore-dangle": [0],
-    "no-trailing-spaces": 1,
+    "no-trailing-spaces": 0,
 
     // vars
     "no-undefined": 2,

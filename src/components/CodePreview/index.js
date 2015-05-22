@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 
 import Signals from '../../utils/Signals';
 
-export default class CodeEditor extends Component {
+export default class CodePreview extends Component {
 
   constructor(props) {
     super(props);
@@ -45,7 +45,7 @@ export default class CodeEditor extends Component {
         action: 'render',
         output: html
       }),
-      'http://alves.im'
+      'http://localhost:8080'
     );
   }
 

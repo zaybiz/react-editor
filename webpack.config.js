@@ -5,15 +5,15 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var embedFileSize = 65536;
 
 var config = {
-  entry: ['./app/index.js'],
+  entry: ['./src/index.js'],
 
   output: {
-    path: './public',
+    path: './site',
     filename: 'bundle.js'
   },
 
   resolve: {
-    modulesDirectories: ['node_modules', './app'],
+    modulesDirectories: ['node_modules', './src'],
     extensions: ['', '.js', '.jsx']
   },
 
@@ -26,7 +26,7 @@ var config = {
       { 
         test: /\.js$/,
         loaders: ['babel-loader'],
-        include: [new RegExp(path.join(__dirname, 'app'))]
+        include: [new RegExp(path.join(__dirname, 'src'))]
       },
       {test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader')},
       {test: /\.svg/, loader: 'url?limit=' + embedFileSize + '&mimetype=image/svg+xml'},
@@ -42,7 +42,7 @@ var config = {
       {
         test: /\.js$/,
         loaders: ['eslint'],
-        include: [new RegExp(path.join(__dirname, 'app'))]
+        include: [new RegExp(path.join(__dirname, 'src'))]
       }
     ]
   },
@@ -54,6 +54,7 @@ var config = {
 };
 
 var development = _.extend({}, config, {
+  entry: ['webpack/hot/dev-server','./src/index.js'],
   devtool: 'eval'
 });
 

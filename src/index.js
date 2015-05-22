@@ -1,12 +1,17 @@
 import './index.css';
 
 import React, {Component} from 'react';
-import CodeEditor from './components/CodeEditor';
+
+import CodeEditor from './CodeEditor';
+import CodePreview from './CodePreview';
 
 class App extends Component {
   render() {
     return (
-      <CodeEditor />
+      <div>
+        <CodeEditor />
+        <CodePreview />
+      </div>
     );
   }
 }

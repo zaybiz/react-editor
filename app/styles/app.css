@@ -1,5 +1,3 @@
-@import "../../node_modules/codemirror/lib/codemirror.css";
-
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -16,40 +14,4 @@ body {
   color: #0B032D;
   background: #fff;
   overflow: hidden;
-}
-
-#app {
-  width: 100%;
-  height: 100%;
-}
-
-.CodeMirror {
-  height: 100% !important;
-}
-
-.App {
-  position: relative;;
-  width: 100%;
-  height: 100%;
-}
-
-.Editor {
-  position: absolute;
-  top: 32px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-}
-
-.Panel {
-  top: 0;
-  width: 50%;
-  height: 100%;
-  position: absolute;
-  z-index: 10;
-  overflow: hidden;
-}
-
-.PanelEdit {
-  height: 100%;
 }

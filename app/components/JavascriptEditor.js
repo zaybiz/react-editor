@@ -14,7 +14,7 @@ export default class JavascriptEditor extends Component {
 
     this.settings = {
       mode: 'text/javascript',
-      value: "React.render(\n  <h1>Hello, world!</h1>,\n  document.getElementById('content')\n);",
+      value: 'React.render(\n  <h1>Hello, humans!</h1>,\n  document.getElementById("content")\n);',
       viewportMargin: Infinity,
       lineNumbers: true,
       lineWrapping: true,

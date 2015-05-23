@@ -1,3 +1,5 @@
+import '../styles/CodeMirrorEditor.css';
+
 import React, {Component} from 'react';
 
 import CodeMirror from 'codemirror';
@@ -33,7 +35,7 @@ export default class CodeMirrorEditor extends Component {
       lineWrapping: true,
       smartIndent: false, // javascript mode does bad things with jsx indents
       matchBrackets: true,
-      theme: 'solarized-light',
+      theme: 'default',
       readOnly: this.props.readOnly
     });
 
@@ -63,7 +65,9 @@ export default class CodeMirrorEditor extends Component {
     }
 
     return (
-      <div>{editor}</div>
+      <div className="Panel CodeMirrorEditor">
+        <div className="PanelEdit">{editor}</div>
+      </div>
     );
   }
 }

@@ -64,8 +64,8 @@ const CodePreview = React.createClass({
 
   render() {
     return (
-      <div className="CodePreview">
-        <div ref="mount"></div>
+      <div className="Panel CodePreview">
+        <div className="PanelPreview" ref="mount"></div>
       </div>
     );
   }

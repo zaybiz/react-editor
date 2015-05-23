@@ -7,11 +7,41 @@ html, body {
 }
 
 body {
-  font-family: 'Lucida Grande', sans-serif;
+  font-family: 'Lucida Grande', 'Helvetica Neue', arial, sans-serif;
   font-size: 13px;
   margin: 0;
   padding: 0;
   color: #0B032D;
   background: #fff;
   overflow: hidden;
+}
+
+#content, .App {
+  height: 100%;
+}
+
+.Editor {
+  position: absolute;
+  /*top: 32px;*/
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+
+.Panel {
+  top: 0;
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.PanelEdit {
+  height: 100%;
+}
+
+.PanelPreview {
+  padding: 15px;
 }

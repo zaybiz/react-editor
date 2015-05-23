@@ -5,10 +5,10 @@ import App from './components/App';
 
 const defaultCode = `var HelloMessage = React.createClass({
   render: function() {
-    return <div>Hello, {this.props.name}!</div>;
+    return <h3>Hello, {this.props.name}!</h3>;
   }
 });
-return <HelloMessage name="Humans" />;
+return <HelloMessage name="humans" />;
 `;
 
 React.render(

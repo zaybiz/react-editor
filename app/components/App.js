@@ -11,7 +11,6 @@ export default class App extends Component {
   }
 
   handleCodeChange(code) {
-    console.log(code);
     this.setState({code});
   }
 

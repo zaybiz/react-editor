@@ -1,6 +1,6 @@
 # react-editor
 
-Live preview of React components.
+Live preview and editing of React components.
 
 [**Demo**](http://henriquea.github.io/react-editor)
 

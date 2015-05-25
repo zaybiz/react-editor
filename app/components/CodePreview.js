@@ -1,70 +1,74 @@
 import '../styles/CodePreview.css';
 
-import React, {Component} from 'react';
+import React from 'react';
 
-import Signals from '../utils/Signals';
+var selfClearTimeout = {
+  componentDidUpdate() {
+    clearTimeout(this.timeoutId);
+  },
 
-export default class CodePreview extends Component {
-
-  constructor(props) {
-    super(props);
-    this.sandbox = {};
+  setTimeout() {
+    clearTimeout(this.timeoutId);
+    this.timeoutId = setTimeout.apply(null, arguments);
   }
+};
+
+const CodePreview = React.createClass({
+
+  propTypes: {
+    code: React.PropTypes.string.isRequired
+  },
+
+  mixins: [selfClearTimeout],
 
   componentDidMount() {
-    this.sandbox = document.createElement('iframe');
-    this.sandbox.src = 'preview.html';
-    this.sandbox.scrolling = 'no';
-    this.sandbox.setAttribute('allowfullscreen', !0);
-    this.sandbox.sandbox = 'allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts';
-    React.findDOMNode(this.refs.result).appendChild(this.sandbox);
-    this.sandbox.addEventListener('load', this.preRenderPreview);
-    Signals.outputGenerated.add(this.onOutputGenerate.bind(this));
-  }
+    this.executeCode();
+  },
 
-  componentWillUnmount() {
-    this.sandbox.removeEventListener('load', this.preRenderPreview.bind(this));
-    this.sandbox = null;
-    Signals.outputGenerated.remove(this.onOutputGenerate);
-  }
+  componentDidUpdate(prevProps) {
+    // execute code only when the state's not being updated by switching tab
+    // this avoids re-displaying the error, which comes after a certain delay
+    if (this.props.code !== prevProps.code) {
+      this.executeCode();
+    }
+  },
 
-  onOutputGenerate(code) {
-    var markup = `<!doctype html>
-        <html>
-        <head>
-          <script src="react.min.js"></script>
-          <script src="JSXTransformer.js"></script>
-          <meta charset="utf-8">
-          <title></title>
-        </head>
-        <body>
-          <div id="content"></div>
-          <script type="text/jsx">${code}</script>
-        </body>
-      </html>`;
-    this.renderPreview(markup);
-  }
+  compileCode() {
+    return window.JSXTransformer.transform(
+      '(function() {' +
+          this.props.code +
+      '\n})();',
+    { harmony: true }
+    ).code;
+  },
 
-  preRenderPreview() {
-    //clearTimeout(this.rendertimeout),
-    //this.rendertimeout = setTimeout(this._render.bind(this), a !== c ? a : 250)
-  }
+  executeCode() {
+    var mountNode = this.refs.mount.getDOMNode();
 
-  renderPreview(html) {
-    this.sandbox.contentWindow.postMessage(
-      JSON.stringify({
-        action: 'render',
-        output: html
-      }),
-      'http://localhost:8080'
-    );
-  }
+    try {
+      React.unmountComponentAtNode(mountNode);
+    } catch (e) { }
+
+    try {
+      var compiledCode = this.compileCode();
+      React.render(eval(compiledCode), mountNode);
+    } catch (err) {
+      this.setTimeout(function() {
+        React.render(
+          <div className="playgroundError">{err.toString()}</div>,
+          mountNode
+        );
+      }, 500);
+    }
+  },
 
   render() {
     return (
       <div className="Panel CodePreview">
-        <div ref="result"></div>
+        <div className="PanelPreview" ref="mount"></div>
       </div>
     );
   }
-}
+});
+
+export default CodePreview;

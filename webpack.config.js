@@ -5,10 +5,10 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var embedFileSize = 65536;
 
 var config = {
-  entry: ['./app/app.js'],
+  entry: ['./app/index.js'],
 
   output: {
-    path: './site',
+    path: './public',
     filename: 'bundle.js'
   },
 
@@ -54,7 +54,7 @@ var config = {
 };
 
 var development = _.extend({}, config, {
-  entry: ['webpack/hot/dev-server','./app/app.js'],
+  entry: ['webpack/hot/dev-server','./app/index.js'],
   devtool: 'eval'
 });
 

@@ -3,7 +3,7 @@ import './styles/index.css';
 import React from 'react';
 import App from './components/App';
 
-const defaultCode = `// Code example from Facebook's tutorial
+const defaultCode = `// Code sample from Facebook's tutorial
 // https://facebook.github.io/react/docs/tutorial.html
 var data = [
   {author: "Pete Hunt", text: "This is one comment"},
@@ -25,10 +25,16 @@ var Comment = React.createClass({
 
 var CommentList = React.createClass({
   render: function() {
+    var commentNodes = this.props.data.map(function (comment) {
+      return (
+        <Comment author={comment.author}>
+          {comment.text}
+        </Comment>
+      );
+    });
     return (
       <div className="commentList">
-        <Comment author="Pete Hunt">This is one comment</Comment>
-        <Comment author="Jordan Walke">This is *another* comment</Comment>
+        {commentNodes}
       </div>
     );
   }
@@ -49,7 +55,7 @@ var CommentBox = React.createClass({
     return (
       <div className="commentBox">
         <h3>Comments</h3>
-        <CommentList />
+        <CommentList data={this.props.data} />
         <CommentForm />
       </div>
     );

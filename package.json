@@ -1,8 +1,7 @@
 {
-  "name": "reactbin",
-  "version": "0.0.1",
-  "description": "React playground",
-  "private": true,
+  "name": "react-editor",
+  "version": "0.1.0",
+  "description": "Live preview and editing of React components",
   "main": "./app/index.js",
   "scripts": {
     "dev": "./node_modules/.bin/webpack-dev-server --devtool eval --progress --inline --colors --hot --content-base public",
@@ -11,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/henriquea/reactbin.git"
+    "url": "https://github.com/henriquea/react-editor.git"
   },
   "keywords": [
     "webpack",
@@ -22,9 +21,9 @@
   "author": "Henrique Alves <henriquea@gmail.com> (http://alves.im)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/henriquea/reactbin/issues"
+    "url": "https://github.com/henriquea/react-editor/issues"
   },
-  "homepage": "https://github.com/henriquea/reactbin",
+  "homepage": "https://github.com/henriquea/react-editor",
   "dependencies": {
     "react": "^0.13.3"
   },
